@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Painter - Pradeep Kumar | Professional Painting & Putty Contractor</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font (Inter & Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Hind:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#1E40AF',
+                            darkblue: '#1E3A8A',
+                            gold: '#F59E0B',
+                            yellow: '#FACC15',
+                            accent: '#2563EB',
+                            green: '#10B981'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'Hind', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1E3A8A 0%, #1E40AF 50%, #2563EB 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #FACC15 0%, #F59E0B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="bg-brand-blue text-white p-2.5 rounded-xl shadow-md">
+                    <i class="fa-solid fa-paint-roller text-2xl"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-extrabold text-brand-darkblue tracking-tight">Express<span class="text-brand-gold">Painter</span></span>
+                    <p class="text-xs text-gray-500 font-medium">पेंटिंग और पुट्टी के बेस्ट ठेकेदार</p>
+                </div>
+            </div>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-semibold text-gray-700">
+                <a href="#home" class="hover:text-brand-blue transition">होम (Home)</a>
+                <a href="#services" class="hover:text-brand-blue transition">हमारी सेवाएं</a>
+                <a href="#calculator" class="hover:text-brand-blue transition">रेट कैलकुलेटर</a>
+                <a href="#gallery" class="hover:text-brand-blue transition">गैलरी</a>
+                <a href="#about" class="hover:text-brand-blue transition">हमारे बारे में</a>
+            </nav>
+
+            <!-- Call CTA Header -->
+            <div class="hidden lg:flex items-center gap-3">
+                <a href="tel:8279536245" class="flex items-center gap-2 bg-brand-blue hover:bg-brand-darkblue text-white px-5 py-2.5 rounded-full font-bold shadow-lg transition transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-phone-volume text-brand-yellow"></i>
+                    <span>8279536245</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg text-white relative overflow-hidden py-12 lg:py-20">
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-blue-400 opacity-20 rounded-full blur-3xl"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                
+                <!-- Left Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-brand-yellow text-sm font-semibold">
+                        <i class="fa-solid fa-star"></i> 100% बेस्ट क्वालिटी वर्क की गारंटी
+                    </div>
+                    <h1 class="text-3xl sm:text-5xl font-black leading-tight">
+                        अपने सपनों के घर को दें नया और सुंदर लुक!
+                    </h1>
+                    <p class="text-lg sm:text-xl text-blue-100 font-light max-w-2xl">
+                        <strong class="text-white font-semibold">Express Painter</strong> - मकान, दुकान व ऑफिस के लिए पेंटिंग, पुट्टी (Putty), वॉल टेक्सचर और वॉटरप्रूफिंग का पक्का और भरोसेमंद ठेका।
+                    </p>
+
+                    <!-- Feature Badges -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 text-left max-w-lg mx-auto lg:mx-0">
+                        <div class="flex items-center gap-2 bg-white/10 p-2.5 rounded-lg border border-white/10 text-xs sm:text-sm font-medium">
+                            <i class="fa-solid fa-circle-check text-brand-yellow"></i> सही रेट व साफ़ काम
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/10 p-2.5 rounded-lg border border-white/10 text-xs sm:text-sm font-medium">
+                            <i class="fa-solid fa-circle-check text-brand-yellow"></i> समय पर काम पूरा
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/10 p-2.5 rounded-lg border border-white/10 text-xs sm:text-sm font-medium col-span-2 sm:col-span-1">
+                            <i class="fa-solid fa-circle-check text-brand-yellow"></i> ब्रांडेड पेंट्स
+                        </div>
+                    </div>
+
+                    <!-- Call to Action Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="tel:8279536245" class="w-full sm:w-auto bg-brand-gold hover:bg-yellow-500 text-gray-900 font-extrabold px-8 py-4 rounded-xl shadow-xl flex items-center justify-center gap-3 text-lg transition transform hover:scale-105">
+                            <i class="fa-solid fa-phone text-xl"></i> कॉल करें: 8279536245
+                        </a>
+                        <a href="https://wa.me/918279536245?text=Namaste%20Pradeep%20Bhiya,%20mujhe%20ghar%20me%20paint%20aur%20putty%20ka%20kaam%20karwana%20hai." target="_blank" class="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white font-bold px-8 py-4 rounded-xl shadow-xl flex items-center justify-center gap-3 text-lg transition transform hover:scale-105">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i> WhatsApp पर बात करें
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Owner Profile Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="glass-card rounded-3xl p-6 text-gray-800 shadow-2xl border border-white/40 max-w-sm w-full relative">
+                        <div class="absolute -top-3 -right-3 bg-brand-gold text-gray-900 font-bold px-4 py-1.5 rounded-full text-xs shadow-md uppercase tracking-wider">
+                            मुख्य ठेकेदार
+                        </div>
+
+                        <!-- Profile Image Frame -->
+                        <div class="relative rounded-2xl overflow-hidden shadow-md mb-5 border-4 border-white aspect-[4/3] bg-gray-200">
+                            <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=800&auto=format&fit=crop" alt="Pradeep Kumar - Express Painter" class="w-full h-full object-cover object-center" onerror="this.src='https://placehold.co/600x450/1E40AF/ffffff?text=Pradeep+Kumar+(Express+Painter)'">
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 text-white text-center">
+                                <p class="text-xs font-semibold text-brand-yellow">Express Painter Owner</p>
+                            </div>
+                        </div>
+
+                        <div class="text-center space-y-2">
+                            <h2 class="text-2xl font-bold text-gray-900">प्रदीप कुमार (भैया)</h2>
+                            <p class="text-sm font-semibold text-brand-blue bg-blue-50 py-1 px-3 rounded-full inline-block">
+                                पेंटिंग एवं पुट्टी एक्सपर्ट CONTRACTOR
+                            </p>
+                            <p class="text-xs text-gray-600 pt-1">
+                                "हम आपके मकान को देते हैं बेहतरीन फिनिशिंग और लंबे समय तक चलने वाला मजबूत पेंट।"
+                            </p>
+
+                            <div class="pt-3 border-t border-gray-100 flex justify-between text-left text-xs font-medium text-gray-700">
+                                <div><span class="block font-bold text-gray-900">अनुभव</span> 10+ साल</div>
+                                <div><span class="block font-bold text-gray-900">सर्विस</span> ऑल टाइम उपलब्ध</div>
+                                <div><span class="block font-bold text-gray-900">क्वालिटी</span> 100% बेस्ट</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Contact Highlight Bar -->
+    <div class="bg-brand-gold text-gray-900 py-4 px-4 shadow-inner">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-handshake text-3xl"></i>
+                <div>
+                    <h3 class="font-bold text-lg leading-tight">फ्री एस्टीमेट एवं साइट विजिट के लिए संपर्क करें!</h3>
+                    <p class="text-xs font-medium text-gray-800">अपने घर की नपाई और कोटेशन के लिए अभी भैया को कॉल करें।</p>
+                </div>
+            </div>
+            <a href="tel:8279536245" class="bg-gray-900 hover:bg-black text-white px-6 py-2.5 rounded-lg font-bold text-sm shadow-md flex items-center gap-2">
+                <i class="fa-solid fa-phone"></i> 8279536245
+            </a>
+        </div>
+    </div>
+
+    <!-- Services Offered Section -->
+    <section id="services" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-brand-blue font-extrabold text-sm uppercase tracking-widest">हमारी खास सेवाएं</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-1">हम क्या-क्या काम करते हैं?</h2>
+            <div class="w-20 h-1.5 bg-brand-gold mx-auto mt-3 rounded-full"></div>
+            <p class="text-gray-600 mt-3">Express Painter आपके घर के हर कोने को नया और आकर्षक बनाने के लिए सभी प्रकार के काम ठेके पर लेता है।</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Service 1 -->
+            <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition border border-gray-100 flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 bg-blue-50 text-brand-blue rounded-xl flex items-center justify-center text-2xl mb-5 group-hover:bg-brand-blue group-hover:text-white transition">
+                        <i class="fa-solid fa-fill-drip"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">आंतरिक पेंटिंग (Interior Painting)</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        कमरों, हॉल और सीलिंग के लिए प्रीमियम प्लास्टिक पेंट, इमल्शन पेंट और रॉयल फिनिश का बेहतरीन काम।
+                    </p>
+                </div>
+                <ul class="text-xs text-gray-500 space-y-2 border-t pt-4">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> स्मूथ एंड शाइनी फिनिश</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> कम गंध वाले इको-फ्रेंडली पेंट्स</li>
+                </ul>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition border border-gray-100 flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 bg-yellow-50 text-brand-gold rounded-xl flex items-center justify-center text-2xl mb-5 group-hover:bg-brand-gold group-hover:text-gray-900 transition">
+                        <i class="fa-solid fa-broom-ball"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">वॉल पुट्टी वर्क (Wall Putty Finish)</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        दीवारों की दरारें भरने, सीलन रोकने और पेंट से पहले शीशे जैसी चिकनी फिनिशिंग के लिए डबल कोट पुट्टी काम।
+                    </p>
+                </div>
+                <ul class="text-xs text-gray-500 space-y-2 border-t pt-4">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> JK & Birch White Putty</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> वाटरप्रूफ पुट्टी कोटिंग</li>
+                </ul>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition border border-gray-100 flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 bg-blue-50 text-brand-blue rounded-xl flex items-center justify-center text-2xl mb-5 group-hover:bg-brand-blue group-hover:text-white transition">
+                        <i class="fa-solid fa-house-chimney"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">बाहरी पेंटिंग (Exterior Painting)</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        धूप, बारिश और धूल से बाहरी दीवारों को बचाने के लिए वेदरप्रूफ और एपेक्स पेंटिंग सोल्यूशन्स।
+                    </p>
+                </div>
+                <ul class="text-xs text-gray-500 space-y-2 border-t pt-4">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> वेदरप्रूफ एंटी-फंगल पेंट्स</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> 5 से 7 साल तक टिकने वाली चमक</li>
+                </ul>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition border border-gray-100 flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center text-2xl mb-5 group-hover:bg-purple-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">डिजाइनर टेक्सचर (Wall Textures)</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        ड्रॉइंग रूम और मेन वॉल के लिए फैंसी 3D टेक्सचर डिजाइन, स्टेंसिल वर्क और मेटैलिक फिनिशिंग।
+                    </p>
+                </div>
+                <ul class="text-xs text-gray-500 space-y-2 border-t pt-4">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> लेटेस्ट ट्रेंडिंग डिजाइन्स</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> कस्टम कलर कॉम्बिनेशन</li>
+                </ul>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition border border-gray-100 flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 bg-cyan-50 text-cyan-600 rounded-xl flex items-center justify-center text-2xl mb-5 group-hover:bg-cyan-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-droplet-slash"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">सीलन व वॉटरप्रूफिंग (Waterproofing)</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        दीवारों की सीलन, पपड़ी जमने और डैम्पनेस (Dampness) का पक्का इलाज डॉक्टर फिक्सिट और डैम्प-प्रूफ कोटिंग से।
+                    </p>
+                </div>
+                <ul class="text-xs text-gray-500 space-y-2 border-t pt-4">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> सीलन से हमेशा के लिए राहत</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> रूफ एंड वॉल सीलिंग</li>
+                </ul>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition border border-gray-100 flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 bg-green-50 text-green-600 rounded-xl flex items-center justify-center text-2xl mb-5 group-hover:bg-green-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-file-contract"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">पूरे मकान का ठेका (Complete Contract)</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        नए मकान, विला या रेनोवेशन का पूरा पेंटिंग ठेका (मटेरियल के साथ या बिना मटेरियल) सबसे वाजिब दाम में।
+                    </p>
+                </div>
+                <ul class="text-xs text-gray-500 space-y-2 border-t pt-4">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> विद मटेरियल / लेबर रेट ऑप्शंस</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> टेंशन-फ्री ऑन-टाइम डिलीवरी</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive Painting & Putty Cost Estimator -->
+    <section id="calculator" class="bg-blue-900 text-white py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="bg-white/10 text-brand-yellow font-bold text-xs uppercase px-4 py-1.5 rounded-full">त्वरित लागत कैलकुलेटर</span>
+                <h2 class="text-3xl font-extrabold mt-3">पेंटिंग व पुट्टी का अनुमानित खर्च जानें</h2>
+                <p class="text-blue-200 text-sm mt-2">अपनी एरिया (Sq. Ft.) चुनें और तुरंत अनुमानित रेट देखें</p>
+            </div>
+
+            <div class="bg-white text-gray-800 rounded-3xl p-6 sm:p-8 shadow-2xl">
+                <form id="calcForm" class="space-y-6">
+                    <div>
+                        <label class="block font-bold text-gray-700 mb-2 text-sm">सर्विस का प्रकार चुनें (Select Work Type)</label>
+                        <select id="workType" class="w-full bg-gray-50 border border-gray-300 rounded-xl p-3.5 focus:ring-2 focus:ring-brand-blue outline-none font-medium">
+                            <option value="12">केवल फ्रेश पेंटिंग (Fresh Paint Work) - ₹12 - ₹18 / sq ft</option>
+                            <option value="22" selected>पुट्टी + फ्रेश पेंट (Putty + Primer + Paint) - ₹22 - ₹32 / sq ft</option>
+                            <option value="10">री-पेंटिंग (Re-painting / टचअप) - ₹10 - ₹15 / sq ft</option>
+                            <option value="35">डिजाइनर टेक्सचर पेंट (Wall Texture) - ₹35 - ₹60 / sq ft</option>
+                            <option value="25">एक्सटीरियर वेदरप्रूफ पेंट (Exterior Wall) - ₹25 - ₹40 / sq ft</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between font-bold text-gray-700 text-sm mb-2">
+                            <span>अनुमानित एरिया (Sq Ft Area):</span>
+                            <span id="areaVal" class="text-brand-blue text-base">1000 Sq. Ft.</span>
+                        </div>
+                        <input type="range" id="areaInput" min="100" max="5000" step="50" value="1000" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-brand-blue">
+                        <div class="flex justify-between text-xs text-gray-400 mt-1">
+                            <span>100 Sq. Ft. (एक छोटा कमरा)</span>
+                            <span>5000 Sq. Ft. (बड़ा मकान)</span>
+                        </div>
+                    </div>
+
+                    <!-- Output Card -->
+                    <div class="bg-blue-50 border border-blue-200 rounded-2xl p-5 text-center space-y-2">
+                        <p class="text-xs text-gray-600 font-semibold uppercase tracking-wider">अनुमानित कुल खर्च (Estimated Total Cost)</p>
+                        <div class="text-3xl sm:text-4xl font-extrabold text-brand-darkblue" id="estimatedCost">
+                            ₹22,000 - ₹32,000
+                        </div>
+                        <p class="text-xs text-gray-500">*यह केवल अनुमानित रेट है। सटीक जानकारी व डिस्काउंट के लिए प्रदीप भैया से बात करें।</p>
+                    </div>
+
+                    <a id="calcWhatsappBtn" href="https://wa.me/918279536245?text=Namaste%20Pradeep%20Bhiya,%20mere%20paas%201000%20sq%20ft%20area%20hai,%20mujhe%20exact%20quotation%20chahiye." target="_blank" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition shadow-lg">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        <span>इस एरिया की सटीक कोटेशन WhatsApp पर पाएं</span>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery / Work Showcase -->
+    <section id="gallery" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-brand-blue font-extrabold text-sm uppercase tracking-widest">काम का नमूना</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-1">हमारे वर्क गैलरी (Work Showcase)</h2>
+            <div class="w-20 h-1.5 bg-brand-gold mx-auto mt-3 rounded-full"></div>
+            <p class="text-gray-600 mt-3">Express Painter द्वारा हाल ही में किए गए सुंदर पेंटिंग व पुट्टी वर्क की कुछ झलकियां।</p>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md group">
+                <div class="relative overflow-hidden h-60 bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=800&auto=format&fit=crop" alt="Wall Putty & Smooth Finish Work" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/2563EB/ffffff?text=Smooth+Putty+Finish'">
+                    <span class="absolute top-3 left-3 bg-gray-900/80 text-white text-xs px-3 py-1 rounded-full font-medium">पुट्टी स्मूथ फिनिश</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-gray-900">लिविंग रूम पुट्टी और प्राइमर वर्क</h4>
+                    <p class="text-xs text-gray-500 mt-1">एकदम चिकनी और सीलन-मुक्त दीवारें</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md group">
+                <div class="relative overflow-hidden h-60 bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800&auto=format&fit=crop" alt="Interior Living Room Painting" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/1E40AF/ffffff?text=Interior+Living+Room'">
+                    <span class="absolute top-3 left-3 bg-gray-900/80 text-white text-xs px-3 py-1 rounded-full font-medium">इंटीरियर पेंटिंग</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-gray-900">रॉयल लुक इंटीरियर पेंटिंग</h4>
+                    <p class="text-xs text-gray-500 mt-1">मॉडर्न कलर कॉम्बिनेशन के साथ शानदार लुक</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md group">
+                <div class="relative overflow-hidden h-60 bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800&auto=format&fit=crop" alt="Designer Wall Texture Painting" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/F59E0B/ffffff?text=Designer+Wall+Texture'">
+                    <span class="absolute top-3 left-3 bg-gray-900/80 text-white text-xs px-3 py-1 rounded-full font-medium">वॉल टेक्सचर</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-gray-900">3D डिजाइनर वाल टेक्सचर</h4>
+                    <p class="text-xs text-gray-500 mt-1">हॉल और बेडरूम की मुख्य दीवार के लिए</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md group">
+                <div class="relative overflow-hidden h-60 bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1595846519845-68e298c2edd8?q=80&w=800&auto=format&fit=crop" alt="Exterior Weatherproof Painting" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/10B981/ffffff?text=Exterior+Weatherproof'">
+                    <span class="absolute top-3 left-3 bg-gray-900/80 text-white text-xs px-3 py-1 rounded-full font-medium">बाहरी पेंटिंग</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-gray-900">मकान की बाहरी वेदरप्रूफ पेंटिंग</h4>
+                    <p class="text-xs text-gray-500 mt-1">धूप व बारिश से पक्का बचाव</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md group">
+                <div class="relative overflow-hidden h-60 bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1588854337221-4cf9fa96059c?q=80&w=800&auto=format&fit=crop" alt="Wood & Metal Polish Work" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/8B5CF6/ffffff?text=Wood+and+Metal+Polish'">
+                    <span class="absolute top-3 left-3 bg-gray-900/80 text-white text-xs px-3 py-1 rounded-full font-medium">पालिश वर्क</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-gray-900">दरवाजे व खिड़की की पॉलिश/पेंट</h4>
+                    <p class="text-xs text-gray-500 mt-1">लकड़ी व लोहे के ग्रिल पर शाइनिंग फिनिश</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md group">
+                <div class="relative overflow-hidden h-60 bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop" alt="Full House Painting Contract" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/EF4444/ffffff?text=Full+House+Contract'">
+                    <span class="absolute top-3 left-3 bg-gray-900/80 text-white text-xs px-3 py-1 rounded-full font-medium">मकान का ठेका</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-gray-900">कम्प्लीट होम पेंटिंग प्रोजेक्ट</h4>
+                    <p class="text-xs text-gray-500 mt-1">शुरुआत से अंत तक साफ-सुथरा काम</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="about" class="bg-gray-100 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-brand-blue font-extrabold text-sm uppercase tracking-widest">क्यों चुनें हमें?</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">
+                        Express Painter - प्रदीप कुमार (भैया) पर ही भरोसा क्यों करें?
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        हम सिर्फ पेंटिंग नहीं करते, आपके घर को सुंदर और टिकाऊ बनाने का पूरा ध्यान रखते हैं। हमारे पास अनुभवी कारीगरों की पूरी टीम है जो सफाई और लगन से काम करती है।
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex gap-4 items-start">
+                            <div class="bg-brand-blue text-white w-10 h-10 rounded-xl flex items-center justify-center shrink-0 font-bold">1</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">100% ओरिजिनल एवं ब्रांडेड पेंट्स</h4>
+                                <p class="text-xs text-gray-600">Asian Paints, Berger, Nerolac और Dulux जैसे भरोसेमंद पेंट्स का इस्तेमाल।</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 items-start">
+                            <div class="bg-brand-blue text-white w-10 h-10 rounded-xl flex items-center justify-center shrink-0 font-bold">2</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">सफाई और सुरक्षा का विशेष ध्यान</h4>
+                                <p class="text-xs text-gray-600">पेंटिंग के दौरान आपके फर्श, फर्नीचर और सामान को कवर करके पूरी तरह सुरक्षित रखा जाता है।</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 items-start">
+                            <div class="bg-brand-blue text-white w-10 h-10 rounded-xl flex items-center justify-center shrink-0 font-bold">3</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">समय पर काम पूरा करने की पक्की गारंटी</h4>
+                                <p class="text-xs text-gray-600">जो समय तय होगा, उसी में काम फिनिश करके दिया जाएगा।</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 items-start">
+                            <div class="bg-brand-blue text-white w-10 h-10 rounded-xl flex items-center justify-center shrink-0 font-bold">4</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">वाजिब और किफायती रेट</h4>
+                                <p class="text-xs text-gray-600">मार्केट से सही दाम और बिना किसी छिपे हुए खर्च (No Hidden Costs) के काम।</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paint Brands & Contractor Card -->
+                <div class="lg:col-span-6 bg-white p-8 rounded-3xl shadow-xl border border-gray-200">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">हम इन टॉप ब्रांड्स का उपयोग करते हैं:</h3>
+                    
+                    <div class="grid grid-cols-2 gap-4 text-center mb-8">
+                        <div class="p-4 bg-gray-50 rounded-xl font-bold text-gray-700 border border-gray-200">Asian Paints</div>
+                        <div class="p-4 bg-gray-50 rounded-xl font-bold text-gray-700 border border-gray-200">Berger Paints</div>
+                        <div class="p-4 bg-gray-50 rounded-xl font-bold text-gray-700 border border-gray-200">Nerolac Paints</div>
+                        <div class="p-4 bg-gray-50 rounded-xl font-bold text-gray-700 border border-gray-200">Birla Putty / JK</div>
+                    </div>
+
+                    <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100 text-center space-y-3">
+                        <i class="fa-solid fa-headset text-4xl text-brand-blue"></i>
+                        <h4 class="font-bold text-gray-900">अभी सलाह लें या साइट विजिट बुक करें</h4>
+                        <p class="text-xs text-gray-600">प्रदीप भैया खुद आकर आपके मकान की नपाई करेंगे और बेस्ट रेट देंगे।</p>
+                        <a href="tel:8279536245" class="inline-block bg-brand-blue hover:bg-brand-darkblue text-white px-6 py-3 rounded-xl font-bold text-sm shadow-md">
+                            <i class="fa-solid fa-phone"></i> कॉल करें: 8279536245
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials / Customer Reviews -->
+    <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-brand-blue font-extrabold text-sm uppercase tracking-widest">ग्राहकों के अनुभव</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-1">हमारे ग्राहक क्या कहते हैं?</h2>
+            <div class="w-20 h-1.5 bg-brand-gold mx-auto mt-3 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <div class="flex text-brand-gold text-sm mb-3">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 text-sm italic">
+                        "प्रदीप भैया और उनकी टीम ने हमारे पूरे नए मकान में पुट्टी और पेंटिंग का काम किया। फिनिशिंग इतनी शानदार है कि हर रिश्तेदार तारीफ करता है।"
+                    </p>
+                </div>
+                <div class="mt-4 pt-4 border-t border-gray-100 font-bold text-gray-900 text-sm">
+                    - रमेश शर्मा (गृहस्वामी)
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <div class="flex text-brand-gold text-sm mb-3">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 text-sm italic">
+                        "दीवारों में बहुत सीलन थी। Express Painter ने वाटरप्रूफिंग और पेंट का बहुत बढ़िया काम किया। रेट भी बहुत जायज थे।"
+                    </p>
+                </div>
+                <div class="mt-4 pt-4 border-t border-gray-100 font-bold text-gray-900 text-sm">
+                    - विकास वर्मा (शॉप ओनर)
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <div class="flex text-brand-gold text-sm mb-3">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 text-sm italic">
+                        "सबसे अच्छी बात यह रही कि काम के बाद कोई गंदगी नहीं छोड़ी। पूरे घर में सफाई के साथ पेंटिंग की गई। बहुत बढ़िया सर्विस!"
+                    </p>
+                </div>
+                <div class="mt-4 pt-4 border-t border-gray-100 font-bold text-gray-900 text-sm">
+                    - अमित त्यागी
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-24 md:pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 border-b border-gray-800 pb-8">
+                
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="bg-brand-blue p-2 rounded-lg text-white">
+                            <i class="fa-solid fa-paint-roller"></i>
+                        </div>
+                        <span class="text-xl font-bold text-white">Express<span class="text-brand-gold">Painter</span></span>
+                    </div>
+                    <p class="text-xs text-gray-400">
+                        मकान, दुकान, ऑफिस और विला के लिए पेंटिंग, पुट्टी और वाल डिज़ाइन का विश्वसनीय ठेका।
+                    </p>
+                </div>
+
+                <div class="space-y-2 text-sm">
+                    <h4 class="font-bold text-brand-yellow">ठेकेदार का विवरण:</h4>
+                    <p class="text-gray-300"><i class="fa-solid fa-user text-brand-gold w-5"></i> प्रदीप कुमार (भैया)</p>
+                    <p class="text-gray-300"><i class="fa-solid fa-phone text-brand-gold w-5"></i> 8279536245</p>
+                    <p class="text-gray-300"><i class="fa-brands fa-whatsapp text-brand-gold w-5"></i> 8279536245</p>
+                </div>
+
+                <div class="space-y-2 text-sm">
+                    <h4 class="font-bold text-brand-yellow">मुख्य सेवाएं:</h4>
+                    <p class="text-gray-300">• वॉल पुट्टी एवं प्राइमर</p>
+                    <p class="text-gray-300">• इंटीरियर व एक्सटीरियर पेंटिंग</p>
+                    <p class="text-gray-300">• वाटरप्रूफिंग व 3D टेक्सचर</p>
+                </div>
+
+            </div>
+
+            <div class="text-center text-xs text-gray-500">
+                <p>© 2026 Express Painter (प्रदीप कुमार). सर्वाधिकार सुरक्षित। All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Floating Sticky Bottom Contact Bar -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-2.5 z-50 shadow-2xl flex gap-2">
+        <a href="tel:8279536245" class="flex-1 bg-brand-blue hover:bg-brand-darkblue text-white py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-md">
+            <i class="fa-solid fa-phone"></i>
+            <span>डायरेक्ट कॉल करें</span>
+        </a>
+        <a href="https://wa.me/918279536245?text=Namaste%20Pradeep%20Bhiya,%20mujhe%20ghar%20me%20paint%20aur%20putty%20ka%20kaam%20karwana%20hai." target="_blank" class="flex-1 bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-md">
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+            <span>WhatsApp संदेश</span>
+        </a>
+    </div>
+
+    <!-- Interactive JavaScript Calculator Logic -->
+    <script>
+        const workTypeSelect = document.getElementById('workType');
+        const areaInput = document.getElementById('areaInput');
+        const areaVal = document.getElementById('areaVal');
+        const estimatedCost = document.getElementById('estimatedCost');
+        const calcWhatsappBtn = document.getElementById('calcWhatsappBtn');
+
+        function updateCost() {
+            const sqft = parseInt(areaInput.value);
+            const baseRate = parseInt(workTypeSelect.value);
+            
+            areaVal.textContent = sqft + " Sq. Ft.";
+
+            const minRate = baseRate;
+            const maxRate = Math.round(baseRate * 1.45);
+
+            const minCost = (sqft * minRate).toLocaleString('en-IN');
+            const maxCost = (sqft * maxRate).toLocaleString('en-IN');
+
+            estimatedCost.textContent = `₹${minCost} - ₹${maxCost}`;
+
+            const selectedOptionText = workTypeSelect.options[workTypeSelect.selectedIndex].text.split('-')[0].trim();
+            const msg = `Namaste Pradeep Bhiya, mere paas lagbhag ${sqft} sq ft area hai aur mujhe ${selectedOptionText} karwana hai. Iska estimated cost ₹${minCost} - ₹${maxCost} aa raha hai. Mujhe exact quotation aur site visit chahiye.`;
+            
+            calcWhatsappBtn.href = `https://wa.me/918279536245?text=${encodeURIComponent(msg)}`;
+        }
+
+        areaInput.addEventListener('input', updateCost);
+        workTypeSelect.addEventListener('change', updateCost);
+
+        // Initial Calculation Run
+        updateCost();
+    </script>
+</body>
+</html>
